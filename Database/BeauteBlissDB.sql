@@ -1,0 +1,57 @@
+﻿CREATE TABLE Customer (
+    CustomerID INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    PhoneNo NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) NOT NULL,
+    Address NVARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Staff (
+    StaffID INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Position NVARCHAR(50) NOT NULL,
+    PhoneNo NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Service (
+    ServiceID INT IDENTITY(1,1) PRIMARY KEY,
+    ServiceName NVARCHAR(100) NOT NULL,
+    Category NVARCHAR(50) NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    Duration NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Product (
+    ProductID INT IDENTITY(1,1) PRIMARY KEY,
+    ProductName NVARCHAR(100) NOT NULL,
+    Brand NVARCHAR(100) NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    Quantity INT NOT NULL
+);
+
+CREATE TABLE Booking (
+    BookingID INT IDENTITY(1,1) PRIMARY KEY,
+    CustomerID INT NOT NULL,
+    StaffID INT NOT NULL,
+    ServiceID INT NOT NULL,
+    BookingDate DATE NOT NULL,
+    BookingTime TIME NOT NULL,
+    Status NVARCHAR(50) NOT NULL,
+
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+    FOREIGN KEY (StaffID) REFERENCES Staff(StaffID),
+    FOREIGN KEY (ServiceID) REFERENCES Service(ServiceID)
+);
+
+CREATE TABLE Payment (
+    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
+    BookingID INT NULL,
+    ProductID INT NULL,
+    Method NVARCHAR(50) NOT NULL,
+    Total DECIMAL(10,2) NOT NULL,
+    PaymentDate DATE NOT NULL,
+
+    FOREIGN KEY (BookingID) REFERENCES Booking(BookingID),
+    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+);

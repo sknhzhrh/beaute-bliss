@@ -30,7 +30,41 @@ namespace BeauteBliss
 
         private void registerbtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                connection.Open();
 
+                string query = @"INSERT INTO Customer
+                        (Names, PhoneNo, Email, Addresses, Password)
+                        VALUES
+                        (@Names, @PhoneNo, @Email, @Addresses, @Password)";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.Parameters.AddWithValue("@Names", txtName.Text);
+                cmd.Parameters.AddWithValue("@PhoneNo", txtPhoneNo.Text);
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                cmd.Parameters.AddWithValue("@Addresses", txtAddress.Text);
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Customer Registered Successfully!");
+
+                connection.Close();
+
+                txtName.Clear();
+                txtPhoneNo.Clear();
+                txtEmail.Clear();
+                txtAddress.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
         }
     }
 }

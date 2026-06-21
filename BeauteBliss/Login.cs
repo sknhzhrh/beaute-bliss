@@ -34,20 +34,22 @@ namespace BeauteBliss
             {
                 connection.Open();
 
-                string query = "SELECT COUNT(*) FROM Customer WHERE Names=@Names AND Password=@Password";
+                string query = "SELECT CustomerID FROM Customer WHERE Names=@Names AND Password=@Password";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
 
                 cmd.Parameters.AddWithValue("@Names", txtName.Text);
                 cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
 
-                int count = (int)cmd.ExecuteScalar();
+                object result = cmd.ExecuteScalar();
 
-                if (count > 0)
+                if (result != null)
                 {
+                    int customerID = Convert.ToInt32(result);
+
                     MessageBox.Show("Login Successful!");
 
-                    UserProfile form = new UserProfile();
+                    UserProfile form = new UserProfile(customerID);
                     form.Show();
 
                     this.Hide();
@@ -63,6 +65,11 @@ namespace BeauteBliss
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

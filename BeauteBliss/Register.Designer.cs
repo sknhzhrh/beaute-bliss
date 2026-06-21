@@ -38,12 +38,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.registerbtn = new System.Windows.Forms.Button();
             this.txtPhoneNo = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.linklogin = new System.Windows.Forms.LinkLabel();
             this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,26 +137,6 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Password";
             // 
-            // txtPassword
-            // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Location = new System.Drawing.Point(492, 266);
-            this.txtPassword.Multiline = true;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(237, 25);
-            this.txtPassword.TabIndex = 25;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(327, 273);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 16);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Confirm Password";
-            // 
             // registerbtn
             // 
             this.registerbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
@@ -190,14 +168,14 @@
             this.txtAddress.Size = new System.Drawing.Size(237, 25);
             this.txtAddress.TabIndex = 29;
             // 
-            // txtPass
+            // txtPassword
             // 
-            this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPass.Location = new System.Drawing.Point(492, 224);
-            this.txtPass.Multiline = true;
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(237, 25);
-            this.txtPass.TabIndex = 30;
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.Location = new System.Drawing.Point(492, 224);
+            this.txtPassword.Multiline = true;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(237, 25);
+            this.txtPassword.TabIndex = 30;
             // 
             // linklogin
             // 
@@ -231,12 +209,10 @@
             this.ClientSize = new System.Drawing.Size(855, 430);
             this.Controls.Add(this.linklogin);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtPhoneNo);
             this.Controls.Add(this.registerbtn);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label1);
@@ -265,12 +241,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button registerbtn;
         private System.Windows.Forms.TextBox txtPhoneNo;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.LinkLabel linklogin;
         private System.Windows.Forms.Label label9;
     }

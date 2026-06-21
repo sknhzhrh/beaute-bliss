@@ -83,9 +83,9 @@ namespace BeauteBliss
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            if (selectedCustomerID == 0)
+            if (txtSearch.Text == "")
             {
-                MessageBox.Show("Please select customer first");
+                MessageBox.Show("Please enter Customer ID");
                 return;
             }
 
@@ -102,13 +102,14 @@ namespace BeauteBliss
                 SqlCommand cmd = new SqlCommand(
                     "DELETE FROM Customer WHERE CustomerID=@CustomerID", connection);
 
-                cmd.Parameters.AddWithValue("@CustomerID", selectedCustomerID);
+                cmd.Parameters.AddWithValue("@CustomerID", txtSearch.Text);
+
                 cmd.ExecuteNonQuery();
 
                 connection.Close();
 
                 MessageBox.Show("Customer Deleted Successfully");
-                selectedCustomerID = 0;
+
                 txtSearch.Clear();
                 LoadCustomerData();
             }

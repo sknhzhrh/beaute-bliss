@@ -16,9 +16,12 @@ namespace BeauteBliss
     {
         SqlConnection connection = new SqlConnection(
     @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BeauteBlissDB.mdf;Integrated Security=True");
-        public UserProfile()
+
+        int customerID;
+        public UserProfile(int id)
         {
             InitializeComponent();
+            customerID = id;
         }
 
         private void LoadProfile()
@@ -26,7 +29,9 @@ namespace BeauteBliss
             connection.Open();
 
             SqlCommand cmd = new SqlCommand(
-                "SELECT * FROM Customer WHERE CustomerID = 1", connection);
+    "SELECT * FROM Customer WHERE CustomerID=@CustomerID", connection);
+
+            cmd.Parameters.AddWithValue("@CustomerID", customerID);
 
             SqlDataReader reader = cmd.ExecuteReader();
 

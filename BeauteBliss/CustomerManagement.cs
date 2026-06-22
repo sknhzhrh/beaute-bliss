@@ -57,62 +57,66 @@ namespace BeauteBliss
             dataGridView1.DataSource = dt;
         }
 
-        private void editbtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                connection.Open();
-
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customer", connection);
-                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-
-                DataTable dt = (DataTable)dataGridView1.DataSource;
-                adapter.Update(dt);
-
-                connection.Close();
-
-                MessageBox.Show("Customer Updated Successfully");
-                LoadCustomerData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                connection.Close();
-            }
-        }
-
         private void delbtn_Click(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
             {
-                MessageBox.Show("Please enter Customer ID");
+                MessageBox.Show("Please enter Customer ID.");
                 return;
             }
 
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to delete this customer?",
+            int customerID = Convert.ToInt32(txtSearch.Text);
+
+            DialogResult confirm = MessageBox.Show(
+                "This will delete the customer's booking records first. Continue?",
                 "Confirm Delete",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+                MessageBoxIcon.Warning);
 
-            if (result == DialogResult.Yes)
+            if (confirm == DialogResult.No)
             {
+                return;
+            }
+
+            try
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
+                SqlCommand deleteBooking = new SqlCommand(
+                    "DELETE FROM Booking WHERE CustomerID=@CustomerID", connection);
+                deleteBooking.Parameters.AddWithValue("@CustomerID", customerID);
+                deleteBooking.ExecuteNonQuery();
+
+                SqlCommand deleteCustomer = new SqlCommand(
                     "DELETE FROM Customer WHERE CustomerID=@CustomerID", connection);
+                deleteCustomer.Parameters.AddWithValue("@CustomerID", customerID);
 
-                cmd.Parameters.AddWithValue("@CustomerID", txtSearch.Text);
+                int rows = deleteCustomer.ExecuteNonQuery();
 
-                cmd.ExecuteNonQuery();
-
-                connection.Close();
-
-                MessageBox.Show("Customer Deleted Successfully");
-
-                txtSearch.Clear();
-                LoadCustomerData();
+                if (rows > 0)
+                {
+                    MessageBox.Show("Customer deleted successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Customer ID not found.");
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            LoadCustomerData();
         }
 
         private void refbtn_Click(object sender, EventArgs e)
@@ -131,5 +135,6 @@ namespace BeauteBliss
                 txtSearch.Text = selectedCustomerID.ToString();
             }
         }
+
     }
 }

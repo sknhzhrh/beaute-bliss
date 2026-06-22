@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.editbtn = new System.Windows.Forms.Button();
             this.delbtn = new System.Windows.Forms.Button();
             this.refbtn = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -51,25 +50,12 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // editbtn
-            // 
-            this.editbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
-            this.editbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editbtn.ForeColor = System.Drawing.Color.White;
-            this.editbtn.Location = new System.Drawing.Point(341, 23);
-            this.editbtn.Name = "editbtn";
-            this.editbtn.Size = new System.Drawing.Size(70, 36);
-            this.editbtn.TabIndex = 2;
-            this.editbtn.Text = "Edit";
-            this.editbtn.UseVisualStyleBackColor = false;
-            this.editbtn.Click += new System.EventHandler(this.editbtn_Click);
-            // 
             // delbtn
             // 
             this.delbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
             this.delbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delbtn.ForeColor = System.Drawing.Color.White;
-            this.delbtn.Location = new System.Drawing.Point(422, 23);
+            this.delbtn.Location = new System.Drawing.Point(351, 23);
             this.delbtn.Name = "delbtn";
             this.delbtn.Size = new System.Drawing.Size(84, 36);
             this.delbtn.TabIndex = 3;
@@ -82,7 +68,7 @@
             this.refbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(69)))), ((int)(((byte)(96)))));
             this.refbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refbtn.ForeColor = System.Drawing.Color.White;
-            this.refbtn.Location = new System.Drawing.Point(517, 23);
+            this.refbtn.Location = new System.Drawing.Point(453, 23);
             this.refbtn.Name = "refbtn";
             this.refbtn.Size = new System.Drawing.Size(94, 36);
             this.refbtn.TabIndex = 4;
@@ -115,11 +101,10 @@
             this.groupBox1.Controls.Add(this.searchbtn);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.refbtn);
-            this.groupBox1.Controls.Add(this.editbtn);
             this.groupBox1.Controls.Add(this.delbtn);
             this.groupBox1.Location = new System.Drawing.Point(43, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(668, 78);
+            this.groupBox1.Size = new System.Drawing.Size(585, 78);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search Customer ID:";
@@ -147,6 +132,7 @@
             this.Controls.Add(this.backbtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "CustomerManagement";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerManagement";
             this.Load += new System.EventHandler(this.CustomerManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -159,7 +145,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button editbtn;
         private System.Windows.Forms.Button delbtn;
         private System.Windows.Forms.Button refbtn;
         private System.Windows.Forms.TextBox txtSearch;

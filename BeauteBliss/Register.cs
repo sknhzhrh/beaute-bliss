@@ -51,20 +51,30 @@ namespace BeauteBliss
 
                 MessageBox.Show("Customer Registered Successfully!");
 
-                connection.Close();
-
                 txtName.Clear();
                 txtPhoneNo.Clear();
                 txtEmail.Clear();
                 txtAddress.Clear();
+                txtPassword.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
             }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void txtPhoneNo_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

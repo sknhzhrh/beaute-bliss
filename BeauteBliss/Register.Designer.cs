@@ -158,6 +158,7 @@
             this.txtPhoneNo.Name = "txtPhoneNo";
             this.txtPhoneNo.Size = new System.Drawing.Size(237, 25);
             this.txtPhoneNo.TabIndex = 28;
+            this.txtPhoneNo.TextChanged += new System.EventHandler(this.txtPhoneNo_TextChanged);
             // 
             // txtAddress
             // 
@@ -223,7 +224,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Name = "Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.Register_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
